@@ -1,0 +1,18 @@
+[
+	{
+		"Fname": "Chloe",
+		"Lname": "Dirian",
+		"age": 40,
+		"email": "dirian@gmail.com",
+		"password": 87456321,
+		"gender": "M"
+	},
+	{
+		"Fname": "John",
+		"Lname": "Peter",
+		"age": 20,
+		"email": "johnpeter@gmail.com",
+		"password": 12345678,
+		"gender": "M"
+	}
+]
