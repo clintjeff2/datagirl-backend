@@ -5,7 +5,8 @@
 		"age": 40,
 		"email": "dirian@gmail.com",
 		"password": 87456321,
-		"gender": "M"
+		"gender": "M",
+		"id": 1
 	},
 	{
 		"Fname": "John",
@@ -13,6 +14,61 @@
 		"age": 20,
 		"email": "johnpeter@gmail.com",
 		"password": 12345678,
-		"gender": "M"
+		"gender": "M",
+		"id": 2
+	},
+	{
+		"Fname": "Ane",
+		"Lname": "Blu",
+		"age": 25,
+		"email": "aneblue@gmail.com",
+		"password": 87456321,
+		"gender": "F",
+		"id": 3
+	},
+	{
+		"Fname": "Jane",
+		"Lname": "Doe",
+		"age": 19,
+		"email": "janedoe@gmail.com",
+		"password": 87456321,
+		"gender": "F",
+		"id": 4
+	},
+	{
+		"Fname": "Jackson",
+		"Lname": "Don",
+		"age": 19,
+		"email": "donjackson@gmail.com",
+		"password": 87456321,
+		"gender": "M",
+		"id": 5
+	},
+	{
+		"Fname": "Mario",
+		"Lname": "Carlo",
+		"age": 30,
+		"email": "mariocarlo@gmail.com",
+		"password": 87456321,
+		"gender": "M",
+		"id": 6
+	},
+	{
+		"Fname": "Sandrine",
+		"Lname": "Mbah",
+		"age": 22,
+		"email": "mbahsandrine@gmail.com",
+		"password": 87456321,
+		"gender": "F",
+		"id": 7
+	},
+	{
+		"Fname": "Hope",
+		"Lname": "Lum",
+		"age": 20,
+		"email": "lumhope@gmail.com",
+		"password": 87456321,
+		"gender": "F",
+		"id": 8
 	}
 ]

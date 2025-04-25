@@ -5,19 +5,17 @@ const app = express();
 
 app.use(express.json());
 
-app.use((req, res, next) => {
-	fs.readFile('./data/database.json', (err, data) => {
-		if (err) {
-			console.log(err);
-			res.end();
-		}
+// app.use((req, res, next) => {
+// 	fs.readFile('./data/database.json', (err, data) => {
+// 		if (err) {
+// 			console.log(err);
+// 			res.end();
+// 		}
+// 		next();
+// 	});
+// });
 
-		console.log(typeof data);
-		res.write(data);
-		next();
-	});
-});
-
+//CREATE USER
 app.post('/user', (req, res) => {
 	fs.readFile('./data/database.json', (err, data) => {
 		if (err) {
@@ -26,7 +24,9 @@ app.post('/user', (req, res) => {
 		}
 
 		const dbData = JSON.parse(data);
+		const id = dbData.length + 1;
 		dbData.push(req.body);
+		req.body.id = id;
 		fs.writeFile('./data/database.json', JSON.stringify(dbData), (err) => {
 			if (err) {
 				console.log(err);
@@ -38,6 +38,41 @@ app.post('/user', (req, res) => {
 		});
 	});
 });
+
+//GET ALL USERS
+app.get('/user', (req, res) => {
+	fs.readFile('./data/database.json', (err, data) => {
+		const db = JSON.parse(data);
+
+		// res.send({
+		// 	results: db.length,
+		// 	data: db,
+		// });
+		// res.end();
+
+		res.status(200).json({
+			results: db.length,
+			data: db,
+		});
+	});
+});
+
+//GET A USER
+app.get('/user/:userId', (req, res) => {
+	const Id = req.params.userId;
+
+	fs.readFile('./data/database.json', (err, data) => {
+		const db = JSON.parse(data);
+
+		const person = db.filter((user) => user.id == Id);
+
+		res.status(200).json(person);
+	});
+});
+
+app.delete('/user/:id', (req, res) => {
+	
+})
 
 app.listen(6000, function () {
 	console.log('Listening to port 3000');
