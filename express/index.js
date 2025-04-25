@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const { getAllUsers } = require('./controller/userController');
 
 const app = express();
 
@@ -40,22 +41,7 @@ app.post('/user', (req, res) => {
 });
 
 //GET ALL USERS
-app.get('/user', (req, res) => {
-	fs.readFile('./data/database.json', (err, data) => {
-		const db = JSON.parse(data);
-
-		// res.send({
-		// 	results: db.length,
-		// 	data: db,
-		// });
-		// res.end();
-
-		res.status(200).json({
-			results: db.length,
-			data: db,
-		});
-	});
-});
+app.get('/user', getAllUsers);
 
 //GET A USER
 app.get('/user/:userId', (req, res) => {
@@ -71,8 +57,23 @@ app.get('/user/:userId', (req, res) => {
 });
 
 app.delete('/user/:id', (req, res) => {
-	
-})
+	const id = req.params.id;
+
+	fs.readFile('./data/database.json', (err, data) => {
+		const db = JSON.parse(data);
+
+		const newUsers = db.filter((user) => user.id != id);
+
+		fs.writeFile('./data/database.json', JSON.stringify(newUsers), (err) => {
+			if (err) {
+				console.log(err);
+				res.end('An error occured');
+			}
+
+			res.status(204).json({ message: 'Deleted successfully' });
+		});
+	});
+});
 
 app.listen(6000, function () {
 	console.log('Listening to port 3000');

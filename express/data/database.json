@@ -9,15 +9,6 @@
 		"id": 1
 	},
 	{
-		"Fname": "John",
-		"Lname": "Peter",
-		"age": 20,
-		"email": "johnpeter@gmail.com",
-		"password": 12345678,
-		"gender": "M",
-		"id": 2
-	},
-	{
 		"Fname": "Ane",
 		"Lname": "Blu",
 		"age": 25,
@@ -34,15 +25,6 @@
 		"password": 87456321,
 		"gender": "F",
 		"id": 4
-	},
-	{
-		"Fname": "Jackson",
-		"Lname": "Don",
-		"age": 19,
-		"email": "donjackson@gmail.com",
-		"password": 87456321,
-		"gender": "M",
-		"id": 5
 	},
 	{
 		"Fname": "Mario",
