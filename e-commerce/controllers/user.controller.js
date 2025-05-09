@@ -52,3 +52,7 @@ exports.updateUser = async (req, res) => {
 		res.status(500).json({ message: 'Failed', err });
 	}
 };
+
+exports.generateExcel = async (req, res) => {
+	
+}
