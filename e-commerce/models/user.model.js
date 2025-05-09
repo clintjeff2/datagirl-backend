@@ -38,6 +38,13 @@ const userSchema = new mongoose.Schema({
 			message: 'A user must be a Male or a Female',
 		},
 	},
+	role: {
+		type: String,
+		enum: {
+			values: ['buyer', 'seller', 'admin'],
+			message: 'A user can either be a buyer, a seller or an admin',
+		},
+	},
 	createdAt: {
 		type: Date,
 		default: Date.now(),
