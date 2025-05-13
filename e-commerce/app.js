@@ -12,6 +12,11 @@ const {
 	getAllStores,
 	updateStore,
 } = require('./controllers/store.controller');
+const {
+	createCategory,
+	getAllCategories,
+	getCategory,
+} = require('./controllers/category.controller');
 
 const app = express();
 
@@ -28,4 +33,7 @@ app.get('/store/:id', getStore);
 app.patch('/store/:id', updateStore);
 app.delete('/store/:id', deleteStore);
 
+app.post('/category', createCategory);
+app.get('/category', getAllCategories);
+app.get('/category/:id', getCategory);
 module.exports = app;
