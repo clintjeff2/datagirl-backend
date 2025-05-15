@@ -7,10 +7,15 @@ const storeSchema = new mongoose.Schema({
 		required: [true, 'A store must have a name'],
 	},
 	owner: {
-		type: mongoose.Types.ObjectId,
+		type: mongoose.Types.ObjectId, // mongoose.Schema.Types.ObjectId
 		ref: 'user',
 		required: [true, 'A store must belong to a particular user'],
 	},
+	category: [{
+		type: mongoose.Types.ObjectId,
+		ref: 'category',
+		required: [true, 'A store must belong to a category'],
+	}],
 	location: {
 		type: String,
 		trim: true,
