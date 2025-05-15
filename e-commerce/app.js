@@ -18,6 +18,7 @@ const {
 	getCategory,
 } = require('./controllers/category.controller');
 
+const { login, protect } = require('./controllers/auth.controller');
 const app = express();
 
 app.use(express.json());
@@ -36,4 +37,8 @@ app.delete('/store/:id', deleteStore);
 app.post('/category', createCategory);
 app.get('/category', getAllCategories);
 app.get('/category/:id', getCategory);
+
+app.get('/login', login);
+app.post('/protect', protect);
+
 module.exports = app;
