@@ -44,6 +44,7 @@ const userSchema = new mongoose.Schema({
 			values: ['buyer', 'seller', 'admin'],
 			message: 'A user can either be a buyer, a seller or an admin',
 		},
+		required: [true, 'A user must have a role'],
 	},
 	createdAt: {
 		type: Date,
