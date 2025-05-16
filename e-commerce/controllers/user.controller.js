@@ -44,7 +44,7 @@ exports.updateUser = async (req, res) => {
 		const userId = req.params.id;
 		const data = req.body;
 
-		const user = await User.findByIdAndUpdate(userId, data);
+		const user = await User.findByIdAndUpdate(userId, data, { new: true });
 		// const user = await User.findOneAndUpdate({_id: userId}, data)
 
 		res.status(200).json({ message: 'success', user });
@@ -53,6 +53,4 @@ exports.updateUser = async (req, res) => {
 	}
 };
 
-exports.generateExcel = async (req, res) => {
-	
-}
+exports.generateExcel = async (req, res) => {};
