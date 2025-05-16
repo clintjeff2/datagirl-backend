@@ -36,16 +36,43 @@ exports.login = async (req, res) => {
 	}
 };
 
-exports.protect = async (req, res) => {
+exports.protect = async (req, res, next) => {
 	try {
-		const token = req.body.token;
+		// const token = req.body.token;
+		const authHeader = req.headers.authorization;
 
-		const tokenVerify = await jwt.verify(token, 'my-very-secured-secret');
+		if (!authHeader) {
+			res.status(401).json({ message: 'No token provided, provide a token' });
+		}
 
-		res
-			.status(200)
-			.json({ message: 'User is logged in', payload: tokenVerify });
+		const token = authHeader.split(' ')[1];
+
+		const decoded = await jwt.verify(token, 'my-very-secured-secret');
+		const user = await User.findById(decoded.id);
+
+		req.authUser = user;
+		next();
+
+		// res.status(200).json({ message: 'User is logged in', user });
 	} catch (err) {
 		res.status(500).json({ message: 'Failed', err });
+	}
+};
+
+exports.test1 = (req, res, next) => {
+	const name = 'Neba John Cena';
+
+	req.shareName = name;
+	console.log(req.headers.authorization, '100');
+	next();
+};
+
+exports.restrictTo = (roles) => (req, res, next) => {
+	if (roles.includes(req.authUser.role)) {
+		next();
+	} else {
+		res.status(403).json({
+			message: 'Permission denied, insufficient rights to perform that task',
+		});
 	}
 };
