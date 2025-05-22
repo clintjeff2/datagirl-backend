@@ -41,6 +41,8 @@ exports.protect = async (req, res, next) => {
 		// const token = req.body.token;
 		const authHeader = req.headers.authorization;
 
+		console.log(authHeader, 'By me');
+
 		if (!authHeader) {
 			res.status(401).json({ message: 'No token provided, provide a token' });
 		}
@@ -49,6 +51,9 @@ exports.protect = async (req, res, next) => {
 
 		const decoded = await jwt.verify(token, 'my-very-secured-secret');
 		const user = await User.findById(decoded.id);
+
+		console.log(user);
+		// throw new Error('I created this error');
 
 		req.authUser = user;
 		next();
