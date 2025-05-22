@@ -1,10 +1,5 @@
 const express = require('express');
-const {
-	createUser,
-	getUser,
-	getAllUsers,
-	updateUser,
-} = require('./controllers/user.controller');
+
 const {
 	deleteStore,
 	createStore,
@@ -17,6 +12,7 @@ const {
 	getAllCategories,
 	getCategory,
 } = require('./controllers/category.controller');
+const userRoutes = require('./routes/user.routes');
 
 const {
 	login,
@@ -40,12 +36,9 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.post('/user', createUser);
-app.get('/user', getAllUsers);
-app.get('/user/:id', getUser);
-app.patch('/user/:id', updateUser);
+app.use('/user', userRoutes);
 
-app.post('/store', createStore);
+app.post('/store', protect, createStore);
 app.get('/store', getAllStores);
 app.get('/store/:id', getStore);
 app.patch('/store/:id', updateStore);
